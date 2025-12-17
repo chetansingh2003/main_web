@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notes Page</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: #f4f4f4;
+    }
+
+    .container {
+        width: 95%;
+        margin: auto;
+        padding: 20px;
+        display: flex;
+        gap: 25px;
+    }
+
+    /* LEFT SIDE SECTION - Now for PDF Viewer */
+    .left-box {
+        width: 65%;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .pdf-display {
+        flex: 1;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+    iframe {
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
+
+    .default-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        font-size: 24px;
+        color: #888;
+    }
+
+    /* RIGHT NOTES PANEL */
+    .notes-panel {
+        width: 35%;
+        padding: 20px;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+
+    .panel-title {
+        font-size: 24px;
+        font-weight: bold;
+        text-align: center;
+        background: #222;
+        color: white;
+        padding: 15px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    /* Search Bar */
+    .search-bar {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ccc;
+        border-radius: 8px;
+        font-size: 16px;
+        margin-bottom: 15px;
+    }
+
+    /* Accordion Buttons */
+    .accordion-btn {
+        background: #eee;
+        padding: 14px;
+        width: 100%;
+        border: none;
+        text-align: left;
+        font-size: 18px;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 8px;
+        transition: 0.3s;
+    }
+
+    .accordion-btn:hover {
+        background: #ddd;
+    }
+
+    .panel {
+        display: none;
+        padding: 10px 15px;
+    }
+
+    .panel a {
+        display: block;
+        margin: 5px 0;
+        color: black;
+        text-decoration: none;
+        font-size: 17px;
+    }
+
+    /* PDF Controls */
+    .pdf-controls {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px;
+        background: #f1f1f1;
+        border-top: 1px solid #ccc;
+    }
+
+    .nav-btn {
+        background: #333;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 8px;
+        cursor: pointer;
+        border: none;
+    }
+
+    .nav-btn:hover {
+        background: #000;
+    }
+
+    .download-link {
+        background: #007bff;
+        color: white;
+        padding: 8px 16px;
+        border-radius: 8px;
+        text-decoration: none;
+    }
+</style>
+</head>
+
+<body>
+
+<h1 style="text-align:center; margin-top:20px;">Basic Computer Course Notes</h1>
+
+<div class="container">
+
+    <!-- LEFT CONTENT - PDF Viewer -->
+    <div class="left-box">
+        <div class="pdf-display">
+            <!-- <div id="defaultMessage" class="default-message">Click on a unit to view the PDF</div> -->
+            <iframe id="pdfFrame" src="basic.webp"></iframe>
+        </div>
+        <div class="pdf-controls" id="pdfControls" style="display: none;">
+            <button class="nav-btn" onclick="prevPDF()">⬅ Previous</button>
+            <a id="downloadLink" href="Ch-1 What is Computer.pdf" download class="download-link">Download PDF</a>
+            <button class="nav-btn" onclick="nextPDF()">Next ➡</button>
+        </div>
+    </div>
+
+    <!-- RIGHT NOTES PANEL -->
+    <div class="notes-panel">
+
+        <div class="panel-title">All Notes List</div>
+
+        <input type="text" id="searchNotes" class="search-bar" placeholder="Search Units...">
+
+        <button class="accordion-btn">Unit 1 - Course Topics</button>
+        <div class="panel">
+            <a href="pdf/unit1.pdf" onclick="openPDF('pdf/unit1.pdf')">View Unit 1 PDF</a>
+        </div>
+
+        <button class="accordion-btn">Unit 2 - Fundamentals of Computer</button>
+        <div class="panel">
+            <a href="#" onclick="openPDF('pdf/unit2.pdf')">View Unit 2 PDF</a>
+        </div>
+
+        <button class="accordion-btn">Unit 3 - Microsoft Paint</button>
+        <div class="panel">
+            <a href="#" onclick="openPDF('pdf/unit3.pdf')">View Unit 3 PDF</a>
+        </div>
+
+        <button class="accordion-btn">Unit 4 - WordPad</button>
+        <div class="panel">
+            <a href="#" onclick="openPDF('pdf/unit4.pdf')">View Unit 4 PDF</a>
+        </div>
+
+        <button class="accordion-btn">Unit 5 - Microsoft Word</button>
+        <div class="panel">
+            <a href="#" onclick="openPDF('pdf/unit5.pdf')">View Unit 5 PDF</a>
+        </div>
+
+        <button class="accordion-btn">Unit 6 - Microsoft Excel</button>
+        <div class="panel">
+            <a href="#" onclick="openPDF('pdf/unit6.pdf')">View Unit 6 PDF</a>
+        </div>
+
+    </div>
+</div>
+
+<script>
+/* PDF FILE LIST */
+
+/* PDF FILE LIST */
+let pdfFiles = [
+    "pdf/unit1.pdf",
+    "pdf/unit2.pdf",
+    "pdf/unit3.pdf",
+    "pdf/unit4.pdf",
+    "pdf/unit5.pdf",
+    "pdf/unit6.pdf"
+];
+
+let currentIndex = -1;
+
+/* OPEN PDF in Left Side */
+function openPDF(pdfUrl) {
+    currentIndex = pdfFiles.indexOf(pdfUrl);
+
+    // Show PDF in iframe
+    let frame = document.getElementById("pdfFrame");
+    frame.src = pdfUrl;
+    frame.style.display = "block";
+
+    // Hide default text
+    document.getElementById("defaultMessage").style.display = "none";
+
+    // Show controls
+    document.getElementById("pdfControls").style.display = "flex";
+
+    // Update download button
+    document.getElementById("downloadLink").href = pdfUrl;
+}
+
+/* NEXT PDF */
+function nextPDF() {
+    if (currentIndex < pdfFiles.length - 1) {
+        currentIndex++;
+        openPDF(pdfFiles[currentIndex]);
+    }
+}
+
+/* PREVIOUS PDF */
+function prevPDF() {
+    if (currentIndex > 0) {
+        currentIndex--;
+        openPDF(pdfFiles[currentIndex]);
+    }
+}
+
+/* ACCORDION */
+let acc = document.getElementsByClassName("accordion-btn");
+for (let i = 0; i < acc.length; i++) {
+    acc[i].onclick = function () {
+        this.classList.toggle("active");
+        let panel = this.nextElementSibling;
+        panel.style.display = (panel.style.display === "block") ? "none" : "block";
+    };
+}
+
+/* SEARCH NOTES */
+document.getElementById("searchNotes").addEventListener("keyup", function () {
+    let query = this.value.toLowerCase();
+    let buttons = document.querySelectorAll(".accordion-btn");
+
+    buttons.forEach(btn => {
+        let text = btn.innerText.toLowerCase();
+        let panel = btn.nextElementSibling;
+
+        if (text.includes(query)) {
+            btn.style.display = "block";
+        } else {
+            btn.style.display = "none";
+            panel.style.display = "none";
+        }
+    });
+});
+
+
+
+
+
+
+</script>
+</body>
+</html>

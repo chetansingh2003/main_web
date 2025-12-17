@@ -1,0 +1,584 @@
+/* ===========================
+   Basic Reset & Global Styles
+   =========================== */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.6;
+    color: #111827;
+    background-color: #ffffff;
+}
+
+/* ===========================
+   Layout Helpers (Container, Grid, Spacing)
+   =========================== */
+
+.container {
+    width: 100%;
+    max-width: 1140px;
+    margin: 0 auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 380px;
+    margin-right: -15px;
+}
+
+.row--15 {
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.mt_dec--30 {
+    margin-top: -30px;
+}
+
+.mt--30 {
+    margin-top: 30px;
+}
+
+.mt--20 {
+    margin-top: 20px;
+}
+
+.mt_sm--10 {
+    margin-top: 10px;
+}
+
+.mt_md--10 {
+    margin-top: 10px;
+}
+
+.d-flex {
+    display: flex;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+.gap-3 {
+    gap: 1rem;
+}
+
+.align-items-center {
+    align-items: center;
+}
+
+/* Simple responsive grid (similar to Bootstrap) */
+
+[class*="col-"] {
+    padding-left: 15px;
+    padding-right: 15px;
+    flex: 0 0 100%;
+    max-width: 100%;
+}
+
+@media (min-width: 576px) {
+    .col-sm-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 768px) {
+    .col-md-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 992px) {
+    .col-lg-2 {
+        flex: 0 0 16.6667%;
+        max-width: 16.6667%;
+    }
+
+    .col-lg-3 {
+        flex: 0 0 25%;
+        max-width: 25%;
+    }
+
+    .col-lg-4 {
+        flex: 0 0 33.3333%;
+        max-width: 33.3333%;
+    }
+
+    .col-lg-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+
+    .offset-lg-1 {
+        margin-left: 8.3333%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .col-xl-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+@media (min-width: 1400px) {
+    .col-xxl-6 {
+        flex: 0 0 50%;
+        max-width: 50%;
+    }
+}
+
+/* Utility classes */
+
+.d-none {
+    display: none !important;
+}
+
+.justify-content-start {
+    justify-content: flex-start;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+.justify-content-lg-end {
+    justify-content: center;
+}
+
+@media (min-width: 992px) {
+    .justify-content-lg-end {
+        justify-content: flex-end;
+    }
+
+    .text-lg-start {
+        text-align: left;
+    }
+}
+
+/* ===========================
+   FOOTER TOP
+   =========================== */
+
+.footer-top {
+    background: #f3f4ff; /* LIGHT footer background as requested */
+    padding-top: 50px;
+    padding-bottom: 40px;
+    border-top: 1px solid #e5e7eb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.footer-widget {
+    font-size: 16px;
+    color: #4b5563;
+}
+
+.footer-widget .logo img {
+    width: 380px;
+    height: auto;
+}
+
+/* Footer titles */
+
+.ft-title {
+    font-size: 21px;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    color: #111827;
+    letter-spacing: 0.04em;
+}
+
+/* Links in footer */
+
+.ft-link {
+    list-style: none;
+}
+
+.ft-link li {
+    margin-bottom: 8px;
+}
+
+.ft-link li a {
+    text-decoration: none;
+    color: #4b5563;
+    transition: color 0.2s ease, transform 0.2s ease;
+    display: inline-block;
+}
+
+.ft-link li a:hover {
+    color: #2563eb;
+    transform: translateX(3px);
+}
+
+/* Contact details styling */
+
+.footer-widget .ft-link li span {
+    font-weight: 600;
+    margin-right: 4px;
+    color: #111827;
+}
+
+.footer-widget .ft-link li a[href^="tel"],
+.footer-widget .ft-link li a[href^="mailto"] {
+    color: #4b5563;
+    word-break: break-all;
+}
+
+.footer-widget .ft-link li a[href^="tel"]:hover,
+.footer-widget .ft-link li a[href^="mailto"]:hover {
+    color: #2563eb;
+}
+
+/* ===========================
+   CONTACT BUTTON (Improved Animation)
+   =========================== */
+
+@keyframes borderGlow {
+    0% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 6px rgba(37, 99, 235, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(37, 99, 235, 0);
+    }
+}
+
+.rbt-btn {
+    width: 314px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    cursor:pointer;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    position: relative;
+    overflow: hidden;
+    background: #ffffff;
+    color: #1f2933;
+    animation: borderGlow 2.2s infinite ease-out;
+    box-shadow: none !important;
+}
+
+.rbt-btn:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn-border-gradient {
+    border-image-slice: 1;
+    border-width: 1px;
+    border-style: none;
+    border-image-source: linear-gradient(90deg, #2563eb, #a855f7);
+}
+
+.radius-round {
+    border-radius: 999px;
+}
+
+.rbt-btn .icon-reverse-wrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    z-index: 1;
+}
+
+.rbt-btn .btn-text {
+    white-space: nowrap;
+    transition: transform 0.25s ease;
+}
+
+.rbt-btn .btn-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    width: 18px;
+    height: 18px;
+    position: relative;
+}
+
+/* Two-arrow slide animation */
+.icon-reverse-wrapper {
+    width: 100%;
+    justify-content: center;
+    position: relative;
+    padding-right: 6px;
+}
+
+.icon-reverse-wrapper .btn-icon:nth-of-type(1) {
+    opacity: 1;
+    transform: translateX(0);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.icon-reverse-wrapper .btn-icon:nth-of-type(2) {
+    position: absolute;
+    right: 0;
+    opacity: 0;
+    transform: translateX(-6px);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+/* Background glow on hover */
+.rbt-btn::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(37, 99, 235, 0.15), rgba(168, 85, 247, 0.15));
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 0;
+}
+
+.rbt-btn:hover::before {
+    opacity: 1;
+}
+
+.rbt-btn:hover {
+    transform: translateY(-1px);
+}
+
+/* Hover animation: text & arrows */
+.rbt-btn:hover .btn-text {
+    transform: translateX(-4px);
+}
+
+.rbt-btn:hover .btn-icon:nth-of-type(1) {
+    opacity: 0;
+    transform: translateX(6px);
+}
+
+.rbt-btn:hover .btn-icon:nth-of-type(2) {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* ===========================
+   App Download Buttons
+   =========================== */
+
+.app-download-links .app-store-link,
+.app-download-links .play-store-link {
+    display: inline-block;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.app-download-links img {
+    display: block;
+    max-height: 50px;
+    height: auto;
+    width: auto;
+}
+
+.app-download-links a:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(15, 23, 42, 0.18);
+}
+
+/* ===========================
+   Social Icons
+   =========================== */
+
+.social-icon {
+    list-style: none;
+    display: flex;
+    gap: 10px;
+    padding-left: 0;
+}
+
+.social-icon li {
+    display: inline-flex;
+}
+
+.social-icon li a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 999px;
+    border: 1px solid rgba(148, 163, 184, 0.7);
+    text-decoration: none;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease, color 0.2s ease;
+    color: #4b5563;
+    background-color: #ffffff;
+}
+
+.social-icon li a i {
+    font-size: 14px;
+}
+
+.social-icon li a:hover {
+    background: #2563eb;
+    border-color: #2563eb;
+    transform: translateY(-2px);
+    color: #ffffff;
+}
+
+/* ===========================
+   Logo Variants (light/dark switch)
+   =========================== */
+
+.logo-dark {
+    display: block;
+}
+
+.logo-light {
+    display: none;
+}
+
+.theme-dark .logo-dark {
+    display: none;
+}
+
+.theme-dark .logo-light {
+    display: block;
+}
+
+/* ===========================
+   FOOTER BOTTOM
+   =========================== */
+
+.footer-bottom {
+    background: #eef2ff; /* slightly different light color */
+    padding-top: 12px;
+    padding-bottom: 12px;
+    /* text-align: center; */
+}
+
+.footer-bottom p {
+    margin-right: 10px 40px;
+    font-size: 14px;
+    color: #6b7280;
+    /* text-align: center; */
+}
+
+.footer-bottom a {
+    /* color: #2563eb; */
+    /* text-decoration: none; */
+}
+
+.footer-bottom a:hover {
+    /* text-decoration: underline; */
+}
+
+/* Copyright links */
+
+.copyright-link {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+    padding-left: 0;
+    margin: 0;
+}
+
+/* .copyright-link li a {
+    font-size: 14px;
+    text-decoration: none;
+    color: #4b5563;
+    transition: color 0.2s ease;
+} */
+
+.copyright-link li a:hover {
+    /* color: #2563eb; */
+}
+
+/* Hover underline effect for rbt-link-hover */
+
+.rbt-link-hover a {
+    /* position: relative; */
+}
+
+/* .rbt-link-hover a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    width: 0;
+    height: 1.4px;
+    background-color: currentColor;
+    transition: width 0.2s ease;
+} */
+
+.rbt-link-hover a:hover::after {
+    width: 100%;
+}
+
+/* ===========================
+   Responsive Adjustments
+   =========================== */
+
+@media (max-width: 991.98px) {
+    .footer-top {
+        padding-top: 40px;
+        padding-bottom: 30px;
+    }
+
+    .footer-bottom {
+        text-align: center;
+    }
+}
+
+@media (max-width: 767.98px) {
+    .footer-widget {
+        margin-bottom: 20px;
+    }
+
+    .social-icon {
+        justify-content: flex-start;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .footer-top {
+        padding-top: 30px;
+        padding-bottom: 20px;
+    }
+
+    .footer-widget .logo img {
+        max-width: 150px;
+    }
+
+    .copyright-link {
+        justify-content: center;
+    }
+}
+
+/* ===========================
+   Links Reset Inside Footer
+   =========================== */
+
+.footer-top a {
+    /* text-decoration: none; */
+}
+
+.footer-top a:focus,
+.footer-bottom a:focus {
+    /* outline: 2px dashed #2563eb; */
+    /* outline-offset: 2px; */
+}
