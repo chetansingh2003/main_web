@@ -1,0 +1,106 @@
+/* ===== RESET ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ===== TOOLBAR ===== */
+#toolbar {
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    padding: 8px 0;
+}
+
+.thim-have-any-question {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.thim-have-any-question a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.thim-have-any-question i {
+    color: #ff4500;
+    margin-right: 5px;
+}
+
+/* ===== NAVBAR ===== */
+.thim-nav-wrapper {
+    background: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.tm-table {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 15px 30px;
+}
+
+/* ===== MENU ===== */
+.menu-main-menu {
+    display: flex;
+    list-style: none;
+    gap: 25px;
+}
+
+.tc-menu-inner {
+    text-decoration: none;
+    color: #111;
+    font-weight: 500;
+}
+
+.tc-menu-inner:hover {
+    color: #ff4500;
+}
+
+/* =============================
+   LOGO HOVER REPLACE (MAIN PART)
+============================= */
+
+.logo-hover {
+    position: relative;
+    display: inline-block;
+}
+
+/* Same size for both logos */
+.logo-hover .logo-img {
+    max-height: 65px;
+    width: auto;
+    display: block;
+    transition: opacity 0.3s ease;
+}
+
+/* New logo hidden */
+.logo-hover .new-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+}
+
+/* Hover effect */
+.logo-hover:hover .old-logo {
+    opacity: 0;
+}
+
+.logo-hover:hover .new-logo {
+    opacity: 1;
+}
+
+/* Mobile: disable hover */
+@media (max-width: 768px) {
+    .logo-hover:hover .old-logo,
+    .logo-hover:hover .new-logo {
+        opacity: 1;
+    }
+}
