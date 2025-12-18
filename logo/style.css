@@ -1,0 +1,86 @@
+/* ====== ASSOCIATIONS SECTION ====== */
+.elementor-image-carousel-wrapper {
+    padding: 20px 0;
+}
+
+/* Slide container */
+.swiper-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+/* Image styling */
+.swiper-slide-image {
+    max-width: 100%;
+    height: auto;
+    filter: grayscale(100%);
+    opacity: 0.7;
+    transform: scale(0.9);
+    transition: all 0.4s ease-in-out;
+}
+
+/* Active slide animation */
+.swiper-slide-active .swiper-slide-image {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Hover effect */
+.swiper-slide:hover .swiper-slide-image {
+    filter: grayscale(0%);
+    transform: scale(1.05);
+}
+
+/* Smooth fade effect for non-active slides */
+.swiper-slide-prev,
+.swiper-slide-next {
+    opacity: 0.85;
+}
+
+/* ====== Arrow Buttons ====== */
+.elementor-swiper-button {
+    background: rgba(255, 255, 255, 0.8);
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+}
+
+.elementor-swiper-button:hover {
+    background: #000;
+    color: #fff;
+    transform: scale(1.1);
+}
+
+/* ====== Pagination Dots ====== */
+.swiper-pagination-bullet {
+    background: #bbb;
+    opacity: 1;
+    transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+    background: #000;
+    transform: scale(1.2);
+}
+
+/* ====== Section Title Animation ====== */
+.elementor-widget-heading h2 {
+    animation: fadeUp 1s ease forwards;
+}
+
+/* ====== Keyframes ====== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
